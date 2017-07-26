@@ -4,7 +4,9 @@ list=""
 for i in $@ ; do
   list="$list $here/$i"
 done
+#echo $list
 cd "/Applications/MPlayer OSX Extended.app/Contents/Resources/Binaries/mpextended.mpBinaries/Contents/MacOS"
 pwd
-[ ! -z "$list" ] \
-  && ./mplayer $list
+[ -z "$list" ] \
+  && ./mplayer $@ \
+  || ./mplayer $list
